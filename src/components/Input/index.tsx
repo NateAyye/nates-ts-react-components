@@ -7,7 +7,9 @@ import { IInputProps, InputContainerProps } from './models';
  * @summary It already includes a label and input within it and you can
  * -- type='text' caviate
  * - placholder attribute is purposefully set to an single space so that we can get the effect we achieve
- * [Github Repository]{@link namepathOrURL}
+ *
+ * {@link https://github.com/NateAyye/nates-ts-react-components GithubRepo/wTutorial}
+ *
  * @param id Will add the htmlFor on the label and will also add the id to the input
  * @param radi Can accept any valid CSS border-radius value
  * @param type
