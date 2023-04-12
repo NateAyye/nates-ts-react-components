@@ -9,10 +9,11 @@ function App() {
   ) {
     console.log(e);
   }
+
   return (
     <div className="App">
       <Button onClick={handleMouseClick}>Hello</Button>
-      <Input type='default'  id="name" preview="Name: " />
+      <Input type="default" id="name" preview="Name: " />
     </div>
   );
 }
