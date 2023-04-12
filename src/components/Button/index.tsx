@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import { ButtonContent, ErrorIcon, NatesButton } from './Button.styled';
 import { ButtonProps } from './models';
 
 /**
@@ -17,6 +17,7 @@ import { ButtonProps } from './models';
  * @param id Will add the htmlFor on the label and will also add the id to the input
  * @param radi Can accept any valid CSS border-radius value
  * @param type
+ * @param error Will change the style a lil bit and add an icon (Icon can be turned off with the errorIcon)
  * @param labelProps? If you'd like to add attributes to the label specificly you can do that all within this prop
  *
  * @returns Custom Input Component that is a container containing a <labal> and an <input>
@@ -27,92 +28,44 @@ import { ButtonProps } from './models';
 export const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
+  sColor,
   ...props
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  let rippleX: number = 0;
-  let rippleY: number = 0;
+
 
   const handleButtonClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     if (onClick) onClick(e);
-    console.log(e.currentTarget.offsetTop);
-    rippleX = e.clientX - e.currentTarget.offsetLeft;
-    rippleY = e.clientY - e.currentTarget.offsetTop;
-
+    
     const span = document.createElement('span');
 
-    span.style.top = rippleY + 'px';
-    span.style.left = rippleX + 'px';
-    // span.style.color = 'currentColor';
-    span.style.filter = 'invert(1) grayscale(1) brightness(1)';
+    span.style.top = e.clientY - e.currentTarget.offsetTop + 'px';
+    span.style.left = e.clientX - e.currentTarget.offsetLeft + 'px';
 
     buttonRef.current?.appendChild(span);
 
     setTimeout(() => {
       span.remove();
     }, 500);
-
-    console.log(rippleX, rippleY);
   };
 
   return (
-    <NatesButton ref={buttonRef} onClick={handleButtonClick} {...props}>
-      {children}
-      {!props.noIcon ? props.icon : null}
+    <NatesButton
+      sColor={sColor}
+      ref={buttonRef}
+      onClick={handleButtonClick}
+      {...props}
+    >
+      <ButtonContent>{children}</ButtonContent>
+      <ErrorIcon>
+        {props.noIcon
+          ? null
+          : props.error
+          ? props.errorIcon ?? '❗'
+          : props.icon}
+      </ErrorIcon>
     </NatesButton>
   );
 };
-
-const ripple = keyframes`
-  0% {
-    width: 0;
-    opacity: 0.2;
-  }
-  100% {
-    width: 300%;
-    opacity: 0;
-  }
-`;
-const buttonError = css`
-  background: #da6262;
-
-  ::after {
-    content: '❗';
-    filter: drop-shadow(0 0 2px #f1f3de);
-  }
-`;
-
-const NatesButton = styled.button<ButtonProps>`
-  position: relative;
-  font-size: 1.1em;
-  font-weight: 600;
-  padding: 0.25em 0.75em;
-
-  contain: paint;
-
-  border: none;
-  border-radius: ${(props) => props.radi || '.5rem'};
-
-  background-color: #0072f5;
-  color: whitesmoke;
-
-  cursor: pointer;
-
-  ${(props) => (props.error ? buttonError : null)}
-
-  @keyframes ripple {
-  }
-  span {
-    position: absolute;
-
-    transform: translate(-50%, -50%);
-    aspect-ratio: 1;
-    pointer-events: none;
-    border-radius: 50%;
-    z-index: 200;
-    background: white;
-    animation: ${ripple} 500ms linear infinite;
-  }
-`;
