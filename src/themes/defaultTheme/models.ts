@@ -1,4 +1,4 @@
-import { CSSProperties, ColgroupHTMLAttributes } from 'react';
+import { CSSProperties } from 'react';
 
 export interface DefalultColorTypes {
   [key: string]: CSSProperties['color'];

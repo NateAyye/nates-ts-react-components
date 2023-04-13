@@ -47,8 +47,6 @@ export const Input: React.FC<IInputProps> = ({
   );
 };
 
-const CheckBoxStyles = css``;
-
 const InputContainer = styled.div<InputContainerProps>`
   display: flex;
   flex-direction: column;
