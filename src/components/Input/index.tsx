@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { IInputProps, InputContainerProps } from './models';
+import styled from 'styled-components';
+import { IInputProps } from './models';
 
 /**
  * This Component is a Dynamic Input Component Built in Typescript.
@@ -21,19 +21,8 @@ import { IInputProps, InputContainerProps } from './models';
  * type = 'text'
  * radi = '.25rem'
  */
-export const Input: React.FC<IInputProps> = ({
-  id,
-  preview,
-  type = 'text',
-  radi,
-  labelProps,
-  ...props
-}) => {
-  const name: string = 'Nathan';
-  console.log(
-    name.toLowerCase(),
-    name.split('').reverse().join('').toLowerCase(),
-  );
+export const Input: React.FC<IInputProps> = ({ ...props }) => {
+  const { id, preview, type, radi, labelProps, ...rest } = props;
 
   return (
     <InputContainer type={type} radi={radi}>
@@ -42,27 +31,78 @@ export const Input: React.FC<IInputProps> = ({
           {preview}
         </label>
       ) : null}
-      <input type={type} id={id} placeholder=" " {...props}></input>
+      <input type={type} id={id} placeholder=" " {...rest}></input>
     </InputContainer>
   );
 };
 
-const InputContainer = styled.div<InputContainerProps>`
+const InputContainer = styled.div<Omit<IInputProps, 'id' | 'preview'>>`
   display: flex;
+  line-height: 1.25;
   flex-direction: column;
   position: relative;
+  font-size: 14px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: ${(props) => props.fw || '500'};
 
   & input {
-    margin-top: 1lh;
+    position: relative;
+    font-size: 14px;
     border: 1px solid black;
+    background: #cccccc99;
+    margin-top: calc(
+      1lh + ${(props) => props?.theme.theme.space.sm || '.25rem / 2'}
+    );
+    padding: ${({ theme: { theme } }) =>
+      theme ? `calc(${theme.space.sm} / 2) ${theme.space.sm}` : '.25em .5em'};
+    padding-left: 1.5rem;
     border-radius: ${(props) => props.radi || '.25rem'};
+    box-shadow: 0 0 0px 0 #589eccca;
+
+    transition: box-shadow 200ms ease-in;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0.25lh;
+    left: 50%;
+    height: 0.1ex;
+    width: 80%;
+    background-color: black;
+    transform: translateX(-50%);
+  }
+
+  input:focus-within {
+    border: 1px solid black;
+    outline: 2px solid black;
+    outline-offset: -2px;
+
+    box-shadow: 0 0 1px 2px #589eccca;
+  }
+
+  input:not(:placeholder-shown) {
+    background: #cccccc99;
   }
 
   &:has(input:not(:placeholder-shown)) label {
+    font-size: 16px;
+    top: calc(${(props) => props?.theme.theme.space.sm || `.25rem`} / 2);
+    left: 0.5rem;
+    color: ${(props) => props.theme.theme.colors.foreground || 'black'};
   }
 
   & label {
+    font-size: 14px;
+    color: #444;
     position: absolute;
     pointer-events: none;
+    top: calc(1.25lh + ${(props) => props?.theme.theme.space.sm || '.25rem'});
+    left: calc(
+      ${({ theme: { theme } }) => (theme ? theme.space.sm : '.25em .5em')} +
+        0.2ex + 0.75rem
+    );
+
+    transition: all 200ms ease-in;
   }
 `;

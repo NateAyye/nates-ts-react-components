@@ -44,7 +44,7 @@ export const OptionItem = styled.li<OptionItemType>`
       : isSelected
       ? 'hsl(200, 100%, 70%)'
       : ''};
-  color: ${(props) => (props.isHighlighted ? 'white' : '')};
+  color: ${(props) => (props.isHighlighted ? 'white' : 'black')};
 `;
 
 export const Caret = styled.div`

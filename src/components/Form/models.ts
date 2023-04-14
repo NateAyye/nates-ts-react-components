@@ -1,7 +1,8 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import { IInputProps } from '../Input/models';
 
 type CustomFormTypeProps = '$default' | '$noir';
+
 
 
 export interface FormContainerProps {
@@ -10,6 +11,7 @@ export interface FormContainerProps {
 export interface FormProps {
   title?: string;
   self?: boolean;
+  children?: React.ReactNode | React.ReactNode[] | undefined;
   inputs: IInputProps[];
   element?: React.ReactElement | React.ReactElement[] | undefined;
 }

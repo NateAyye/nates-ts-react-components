@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
-import { ButtonProps } from "./models";
+import styled, { keyframes } from 'styled-components';
+import { ButtonProps } from './models';
 
 const ripple = keyframes`
   0% {
@@ -30,16 +30,21 @@ export const ErrorIcon = styled.strong`
 export const NatesButton = styled.button<ButtonProps>`
   position: relative;
 
-  font-size: 1.1em;
+  font-size: ${(props) => props.theme.theme.fontSizes[props.size || 'md']};
   font-weight: 600;
-  padding: 0.25em 0.75em;
+  padding: calc(${(props) => props.theme.theme.space[props.size || 'md']} / 2)
+    calc(${(props) => props.theme.theme.space[props.size || 'md']} * 2);
   cursor: pointer;
   contain: paint;
   border: none;
   border-radius: ${({ radi }) => radi || '.5rem'};
   color: ${({ sColor }) => sColor || 'white'};
-  background-color: ${({ sColor, error }) =>
-    sColor ? sColor : error ? '#da6262' : '#0072f5'};
+  background-color: ${(props) =>
+    props.sColor
+      ? props.sColor
+      : props.error
+      ? props.theme.theme.colors.error
+      : props.theme.theme.colors.primary};
 
   span {
     position: absolute;

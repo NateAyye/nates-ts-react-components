@@ -23,28 +23,30 @@ function App() {
   const [value2, setValue2] = useState<SelectOption | undefined>(options[0]);
   return (
     <div className="App">
-      <FlexContainer centered fc radi={'.25rem'}>
-        {/* <Button sColor="yellow" icon="🎉" onClick={handleMouseClick}>
+      {/* <FlexContainer centered fc radi={'.25rem'}> */}
+      {/* <Button size="lg" onClick={handleMouseClick}>
           Hello
-        </Button>
-        <Input type="default" id="name" preview="Name: " /> */}
-        <Select
-          multiple
-          value={value1}
-          options={options}
-          onChange={(o) => {
-            setValue1(o);
-          }}
-        />
-        <br />
+        </Button> */}
+      <Input type="default" id="name" preview="Name: " />
+      <Select
+        multiple
+        value={value1}
+        options={options}
+        onChange={(o) => {
+          setValue1(o);
+        }}
+      />
+      {/* <br />
         <Select
           value={value2}
           options={options}
           onChange={(o) => {
             setValue2(o);
           }}
-        />
-        {/* <Form
+        /> */}
+      <Form.Container>
+        <Form
+          self
           title="Register"
           inputs={[
             {
@@ -66,8 +68,9 @@ function App() {
               preview: 'Password: ',
             },
           ]}
-        /> */}
-      </FlexContainer>
+        />
+      </Form.Container>
+      {/* </FlexContainer> */}
     </div>
   );
 }

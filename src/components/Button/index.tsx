@@ -28,6 +28,7 @@ import { ButtonProps } from './models';
 export const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
+  size,
   sColor,
   ...props
 }) => {

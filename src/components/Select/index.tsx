@@ -13,7 +13,6 @@ export const Select: React.FC<SelectProps> = ({
   const [highlightedIndex, setHighlightedIndex] = useState<number>(0);
 
   function clearOptions() {
-    
     multiple ? onChange([]) : onChange(undefined);
   }
 
