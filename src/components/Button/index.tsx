@@ -34,22 +34,22 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-
   const handleButtonClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     if (onClick) onClick(e);
-    
-    const span = document.createElement('span');
+    if (!props.ripple) {
+      const span = document.createElement('span');
 
-    span.style.top = e.clientY - e.currentTarget.offsetTop + 'px';
-    span.style.left = e.clientX - e.currentTarget.offsetLeft + 'px';
+      span.style.top = e.clientY - e.currentTarget.offsetTop + 'px';
+      span.style.left = e.clientX - e.currentTarget.offsetLeft + 'px';
 
-    buttonRef.current?.appendChild(span);
+      buttonRef.current?.appendChild(span);
 
-    setTimeout(() => {
-      span.remove();
-    }, 500);
+      setTimeout(() => {
+        span.remove();
+      }, 500);
+    }
   };
 
   return (

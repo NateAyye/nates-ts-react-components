@@ -5,6 +5,7 @@ export interface ButtonProps
   icon?: string;
   noIcon?: boolean;
   errorIcon?: string;
+  ripple?: boolean
   size?: 'xs' | 'sm' | 'lg' | 'xl';
   /** Will Change the style a little bit and display an error icon if you don't want an Icon set the errorIcon */
   error?: boolean;
