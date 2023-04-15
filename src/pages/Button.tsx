@@ -54,9 +54,7 @@ export const ButtonPage: React.FC<ButtonPageProps> = ({}) => {
       <Button color="error" size="sm" onClick={handleMouseClick}>
         Hello
       </Button>
-      <Button color="error">
-        Default
-      </Button>
+      <Button color="error">Default</Button>
       <Button color="error" size="lg">
         Default
       </Button>
