@@ -79,9 +79,7 @@ export const Button: React.FC<ButtonProps> = ({
       <ButtonContent color={props.color} {...styledProps}>
         {children}
       </ButtonContent>
-      <ErrorIcon {...styledProps}>
-        {noIcon ? null : props.color === 'error' ? errorIcon ?? '❗' : icon}
-      </ErrorIcon>
+      <ErrorIcon {...styledProps}>{noIcon ? null : icon}</ErrorIcon>
     </NatesButton>
   );
 };
