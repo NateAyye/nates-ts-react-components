@@ -31,13 +31,14 @@ export const Input: React.FC<IInputProps> = ({ ...props }) => {
           {preview}
         </label>
       ) : null}
-      <input type={type} id={id} placeholder=" " {...rest}></input>
+      <input type={type} id={id} placeholder=" " {...rest} />
     </InputContainer>
   );
 };
 
 const InputContainer = styled.div<Omit<IInputProps, 'id' | 'preview'>>`
   display: flex;
+  max-width: 20rem;
   line-height: 1.25;
   flex-direction: column;
   position: relative;
@@ -50,12 +51,11 @@ const InputContainer = styled.div<Omit<IInputProps, 'id' | 'preview'>>`
     font-size: 14px;
     border: 1px solid black;
     background: #cccccc99;
-    margin-top: calc(
-      1lh + ${(props) => props?.theme.theme.space.sm || '.25rem / 2'}
-    );
-    padding: ${({ theme: { theme } }) =>
+    margin-top: calc(1lh + ${({ theme }) => theme.space.sm || '.25rem / 2'});
+    padding: ${({ theme }) =>
       theme ? `calc(${theme.space.sm} / 2) ${theme.space.sm}` : '.25em .5em'};
-    padding-left: 1.5rem;
+    padding-left: ${({ theme }) =>
+      theme ? `calc(${theme.space.sm} * 2)` : '.25em .5em'};
     border-radius: ${(props) => props.radi || '.25rem'};
     box-shadow: 0 0 0px 0 #589eccca;
 
@@ -65,8 +65,8 @@ const InputContainer = styled.div<Omit<IInputProps, 'id' | 'preview'>>`
   &::after {
     content: '';
     position: absolute;
-    bottom: 0.25lh;
     left: 50%;
+    bottom: 0.3lh;
     height: 0.1ex;
     width: 80%;
     background-color: black;
@@ -87,9 +87,9 @@ const InputContainer = styled.div<Omit<IInputProps, 'id' | 'preview'>>`
 
   &:has(input:not(:placeholder-shown)) label {
     font-size: 16px;
-    top: calc(${(props) => props?.theme.theme.space.sm || `.25rem`} / 2);
+    top: calc(${(props) => props?.theme.space.sm || `.25rem`} / 2);
     left: 0.5rem;
-    color: ${(props) => props.theme.theme.colors.foreground || 'black'};
+    color: ${(props) => props.theme.colors.foreground || 'black'};
   }
 
   & label {
@@ -97,10 +97,10 @@ const InputContainer = styled.div<Omit<IInputProps, 'id' | 'preview'>>`
     color: #444;
     position: absolute;
     pointer-events: none;
-    top: calc(1.25lh + ${(props) => props?.theme.theme.space.sm || '.25rem'});
+    top: calc(1.25lh + ${(props) => props?.theme.space.sm || '.25rem'});
     left: calc(
-      ${({ theme: { theme } }) => (theme ? theme.space.sm : '.25em .5em')} +
-        0.2ex + 0.75rem
+      ${({ theme }) => (theme ? theme.space.sm : '.25em .5em')} + 0.2ex +
+        0.75rem
     );
 
     transition: all 200ms ease-in;

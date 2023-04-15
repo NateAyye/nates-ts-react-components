@@ -8,7 +8,7 @@ export const FormContainer: React.FC<FormContainerProps> = ({ children }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
+        minHeight: '100vh',
       }}
     >
       {children}

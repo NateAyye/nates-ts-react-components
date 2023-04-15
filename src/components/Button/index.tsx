@@ -2,6 +2,22 @@ import React, { useRef } from 'react';
 import { ButtonContent, ErrorIcon, NatesButton } from './Button.styled';
 import { ButtonProps } from './models';
 
+const createRipple = (
+  e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  buttonRef: React.RefObject<HTMLButtonElement>,
+) => {
+  const span = document.createElement('span');
+
+  span.style.top = e.clientY - e.currentTarget.offsetTop + 'px';
+  span.style.left = e.clientX - e.currentTarget.offsetLeft + 'px';
+
+  buttonRef.current?.appendChild(span);
+
+  setTimeout(() => {
+    span.remove();
+  }, 500);
+};
+
 /**
  * This Component is a Dynamic Button Component Built in Typescript.
  * @summary
@@ -17,6 +33,7 @@ import { ButtonProps } from './models';
  * @param id Will add the htmlFor on the label and will also add the id to the input
  * @param radi Can accept any valid CSS border-radius value
  * @param type
+ * @param z The Z-index of the button
  * @param error Will change the style a lil bit and add an icon (Icon can be turned off with the errorIcon)
  * @param labelProps? If you'd like to add attributes to the label specificly you can do that all within this prop
  *
@@ -26,46 +43,42 @@ import { ButtonProps } from './models';
  * radi = '.5rem'
  */
 export const Button: React.FC<ButtonProps> = ({
-  children,
   onClick,
-  size,
-  sColor,
+  children,
   ...props
 }) => {
+  const { radi, icon, noIcon, errorIcon, ripple, size, error, z } = props;
+  const styledProps = {
+    radi,
+    icon,
+    noIcon,
+    errorIcon,
+    ripple,
+    size,
+    error,
+    z,
+  };
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleButtonClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     if (onClick) onClick(e);
-    if (!props.ripple) {
-      const span = document.createElement('span');
-
-      span.style.top = e.clientY - e.currentTarget.offsetTop + 'px';
-      span.style.left = e.clientX - e.currentTarget.offsetLeft + 'px';
-
-      buttonRef.current?.appendChild(span);
-
-      setTimeout(() => {
-        span.remove();
-      }, 500);
+    if (!ripple) {
+      createRipple(e, buttonRef);
     }
   };
 
   return (
     <NatesButton
-      sColor={sColor}
       ref={buttonRef}
       onClick={handleButtonClick}
+      {...styledProps}
       {...props}
     >
-      <ButtonContent>{children}</ButtonContent>
-      <ErrorIcon>
-        {props.noIcon
-          ? null
-          : props.error
-          ? props.errorIcon ?? '❗'
-          : props.icon}
+      <ButtonContent {...styledProps}>{children}</ButtonContent>
+      <ErrorIcon {...styledProps}>
+        {noIcon ? null : error ? errorIcon ?? '❗' : icon}
       </ErrorIcon>
     </NatesButton>
   );

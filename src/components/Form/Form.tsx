@@ -37,7 +37,6 @@ export const Form: FormComp = ({ inputs, self, title, element, children }) => {
 
 const SForm = styled.form`
   border: 1px solid red;
-  min-width: 250px;
   padding: 1.5em;
 `;
 

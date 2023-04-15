@@ -10,7 +10,22 @@ export interface DefaultTheme {
   theme: {
     colors: DefalultColorTypes;
     space: {};
-    fontSizes: {};
+    fontSizes: {
+      xs: string;
+      sm: string;
+      base: string;
+      md: string;
+      lg: string;
+      xl: string;
+      '2xl': string;
+      '3xl': string;
+      '4xl': string;
+      '5xl': string;
+      '6xl': string;
+      '7xl': string;
+      '8xl': string;
+      '9xl': string;
+    };
     fonts: {
       [K: string]: string;
     };
@@ -24,7 +39,19 @@ export interface DefaultTheme {
     borderStyles: {};
     radii: {};
     shadows: {};
-    zIndices: {};
+    zIndices: {
+      '1': string;
+      '2': string;
+      '3': string;
+      '4': string;
+      '5': string;
+      '6': string;
+      '7': string;
+      '8': string;
+      '9': string;
+      '10': string;
+      max: string;
+    };
     breakpoints: {};
   };
 }

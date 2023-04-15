@@ -39,7 +39,6 @@ export const Select: React.FC<SelectProps> = ({
   useEffect(() => {
     const handleKeyDownEvent = (e: KeyboardEvent) => {
       if (e.target != containerRef.current) return;
-      console.log(e.code);
 
       switch (e.code) {
         case 'Enter':
@@ -49,6 +48,7 @@ export const Select: React.FC<SelectProps> = ({
           break;
         case 'ArrowUp':
         case 'ArrowDown': {
+          e.preventDefault();
           if (!isOpen) {
             setIsOpen(true);
             break;

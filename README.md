@@ -6,7 +6,8 @@
 
 ![badmath](https://img.shields.io/badge/NPM-grey?style=flat&logo=npm&link&left=https://www.npmjs.com/package/nates-ts-react-components)
 
-[NPM Package](https://www.npmjs.com/package/nates-ts-react-components)
+[NPM Package](https://www.npmjs.com/package/nates-ts-react-components) ---
+[Github Repository](https://github.com/NateAyye/nates-ts-react-components)
 
 React Components made with styled components and typescript.
 
@@ -14,6 +15,7 @@ React Components made with styled components and typescript.
   - CSS modules?
   - Class Components?
   - Creating stylesSheets?
+  - Custom Components?
 
 I have been wanting to abstract my components into a reusable package for a while now and I have finally figured it out so I will now slowly be Adding more and more to this Component Library as I Grow as a developer.
 
@@ -86,7 +88,7 @@ _P.S. More Coming Soon_
 The button component is supposed to be your all purpose button for everything.
 It has a default ripple effect when you first add it(can be turned off with the ripple prop).
 
-```js
+```tsx
 import { Button } from 'nates-ts-react-components';
 
 export interface ButtonProps
@@ -96,18 +98,19 @@ export interface ButtonProps
   icon?: string; // You can choose if you want in Icon displayed next to the text
   noIcon?: boolean; // If you don't want any default Icons added
   errorIcon?: string; // You can speciffy the Icon displayed on Error Buttons
-  ripple?: boolean // turn off the ripple effect
+  ripple?: boolean; // turn off the ripple effect
   size?: 'xs' | 'sm' | 'lg' | 'xl'; // Designated Sizes for the button
   /** Will Change the style a little bit and display an error icon if you don't want an Icon set the errorIcon */
   error?: boolean;
   sColor?: string; // Change the background color of the element
 }
 
-
 const App = () => {
   return (
     <div className="app">
-      <Button radi='.25rem .5rem' icon='🎉' >My Button</Button>
+      <Button radi=".25rem .5rem" icon="🎉">
+        My Button
+      </Button>
     </div>
   );
 };
@@ -117,7 +120,7 @@ const App = () => {
 
 The Form.Container if only really meant to be used when the form is the only thing that is on the page. If it is not I'd recommend using just the Form By Itself.
 
-```js
+```tsx
 import { Form } from 'nates-ts-react-components';
 
 
@@ -151,6 +154,62 @@ const FormComponent = () => {
 
 
 ```
+
+# Input
+
+Currently trying to figure out how I want to make this component to support all types of inputs.
+
+- Will come with a Label automatically built in - Going to add a label prop to define if you want a label or not so that you can add your own if you'd like
+
+```tsx
+import { Input } from 'nates-ts-react-components';
+
+export type CustomTypeProps = 'default' | 'noir' | 'shadow' | 'toggle';
+
+export interface IInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'id'> {
+  id: string;
+  preview: string;
+  fw?: CSSProperties['fontWeight'];
+  type?: React.HTMLInputTypeAttribute | CustomTypeProps | undefined;
+  labelProps?: Omit<React.LabelHTMLAttributes<HTMLLabelElement>, 'htmlFor'>;
+  radi?: string;
+}
+
+const App = () => {
+  return (
+    <div className="app">
+      <Input type="text" id="name" preview="Name: " />
+    </div>
+  );
+};
+```
+
+Input Types Currently Working:
+
+- [x] Text
+- [ ] Button
+- [ ] Checkbox
+- [ ] Color
+- [ ] Date
+- [ ] Datetime-local
+- [x] Email
+- [ ] File
+- [ ] Hidden
+- [ ] Image
+- [ ] Month
+- [ ] Number
+- [x] Password
+- [ ] Radio
+- [ ] Range (May just make a seperate Progress Component)
+- [ ] Reset
+- [ ] Search
+- [ ] Submit
+- [ ] Tel
+- [ ] Text
+- [ ] Time
+- [ ] Url
+- [ ] Week
 
 ## How to Contribute
 

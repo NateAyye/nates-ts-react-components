@@ -24,9 +24,13 @@ function App() {
   return (
     <div className="App">
       {/* <FlexContainer centered fc radi={'.25rem'}> */}
-      {/* <Button size="lg" onClick={handleMouseClick}>
-          Hello
-        </Button> */}
+      <Button size="sm" onClick={handleMouseClick}>
+        Hello
+      </Button>
+      <Button>Default</Button>
+      <Button size="lg">Default</Button>
+      <Button size="xl">Default</Button>
+      <Button size="2xl">Default</Button>
       <Input type="default" id="name" preview="Name: " />
       <Select
         multiple
