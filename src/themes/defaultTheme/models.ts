@@ -9,7 +9,6 @@ export interface DefaultTheme {
   className: string;
   theme: {
     colors: {
-      [K: string]: CSSProperties['color'];
       white: string;
       black: string;
 
@@ -160,7 +159,7 @@ export interface DefaultTheme {
       errorSolidHover: string;
       errorSolidContrast: string;
       errorShadow: string;
-    } & DefalultColorTypes;
+    };
     space: {};
     fontSizes: {
       xs: string;

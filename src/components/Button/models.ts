@@ -1,4 +1,4 @@
-import { FontSizeKeys, ZIndicesKeys } from "../../themes";
+import { FontSizeKeys, ThemeColorKeys, ZIndicesKeys } from '../../themes';
 
 export interface NatesButtonProps
   extends Omit<React.HTMLAttributes<HTMLButtonElement>, 'placeholder'> {
@@ -6,6 +6,7 @@ export interface NatesButtonProps
   ripple?: boolean;
   size?: FontSizeKeys;
   radi?: string;
+  color?: ThemeColorKeys;
   z?: ZIndicesKeys;
   ghost?: boolean;
 }

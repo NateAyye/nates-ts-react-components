@@ -333,8 +333,26 @@ export const defaultTheme: DefaultTheme = {
   },
 };
 
-export type FontSizeKeys = keyof DefaultTheme['theme']['fontSizes'];
+type FunctionPropertyNames<T> = {
+  [K in keyof T]: T[K] extends Function ? K : never;
+}[keyof T];
 
-export type ZIndicesKeys = keyof DefaultTheme['theme']['zIndices'];
+type FunctionProperties<T> = Pick<T, FunctionPropertyNames<T>>;
 
-export type ThemeColorKeys = keyof DefaultTheme['theme']['colors'];
+type NonFunctionPropertyNames<T> = {
+  [K in keyof T]: T[K] extends Function ? never : K;
+}[keyof T];
+
+type NonFunctionProperties<T> = Pick<T, NonFunctionPropertyNames<T>>;
+
+export type FontSizeKeys = NonFunctionPropertyNames<
+  DefaultTheme['theme']['fontSizes']
+>;
+
+export type ZIndicesKeys = NonFunctionPropertyNames<
+  DefaultTheme['theme']['zIndices']
+>;
+
+export type ThemeColorKeys = NonFunctionPropertyNames<
+  DefaultTheme['theme']['colors']
+>;
