@@ -27,7 +27,7 @@ export const NatesStyledButton = styled.button<NatesButtonProps>`
     transform: translate(-50%, -50%);
 
     background: ${({ color, ghost, theme: { colors } }) =>
-      ghost ? colors[color || 'white'] : 'whitesmoke'};
+      ghost ? colors[color || 'primary'] : 'whitesmoke'};
 
     animation: ${ripple} 500ms linear infinite;
   }
@@ -41,6 +41,6 @@ export const NatesButtonContent = styled.div<NatesButtonProps>(
     zIndex: 100,
     margin: 0,
     padding: 0,
-    color: ghost ? colors[color || 'white'] : 'whitesmoke',
+    color: ghost ? colors[color || 'primary'] : 'whitesmoke',
   }),
 );
