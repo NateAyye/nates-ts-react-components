@@ -226,6 +226,8 @@ export const defaultTheme: DefaultTheme = {
     },
     space: {
       0: '0rem',
+      mini: '0.2rem',
+      xxs: '0.25rem',
       xs: '0.5rem',
       sm: '0.75rem',
       md: '1rem',
@@ -287,8 +289,14 @@ export const defaultTheme: DefaultTheme = {
       extrabold: '4px',
       black: '5px',
     },
-    borderStyles: {},
+    borderStyles: {
+      thin: '1px solid black',
+      small: '2px solid black',
+      medium: '3px solid black',
+      large: '5px solid black',
+    },
     radii: {
+      xxs: '4px',
       xs: '7px',
       sm: '9px',
       md: '12px',
@@ -326,4 +334,7 @@ export const defaultTheme: DefaultTheme = {
 };
 
 export type FontSizeKeys = keyof DefaultTheme['theme']['fontSizes'];
+
 export type ZIndicesKeys = keyof DefaultTheme['theme']['zIndices'];
+
+export type ThemeColorKeys = keyof DefaultTheme['theme']['colors'];

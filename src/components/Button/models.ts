@@ -10,6 +10,7 @@ export interface ButtonProps
   errorIcon?: string;
   ripple?: boolean;
   size?: FontSizeKeys;
+  ghost?: boolean;
   z?: ZIndicesKeys;
   fg?: CSSProperties['color'];
   /** Will Change the style a little bit and display an error icon if you don't want an Icon set the errorIcon */

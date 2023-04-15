@@ -12,14 +12,15 @@ const ripple = keyframes`
   }
 `;
 
-export const ButtonContent = styled.div`
+export const ButtonContent = styled.div<ButtonProps>`
   display: inline;
   position: relative;
   pointer-events: none;
   z-index: 100;
   margin: 0;
   padding: 0;
-  color: ${({ color }) => color || 'whitesmoke'};
+  color: ${({ color, ghost, theme: { colors } }) =>
+    ghost ? colors[color || 'white'] : 'whitesmoke'};
 `;
 
 export const ErrorIcon = styled.strong`
@@ -38,20 +39,19 @@ export const NatesButton = styled.button<ButtonProps>`
     calc(${({ theme, size }) => theme.space[size || 'md']} * 2);
   cursor: pointer;
   contain: paint;
-  border: none;
+  border: ${({ ghost, color, theme: { colors } }) =>
+    ghost ? `2px solid ${colors[color || 'primary']}` : 'none'};
   border-radius: ${({ radi }) => radi || '.5rem'};
-  color: ${({ fg }) => fg || '#ffffff'};
-  background-color: ${({ color, error, theme }) =>
-    color ?? error
-      ? theme.colors.error || '#aa3434'
-      : theme.colors.primary || '#1a75f1'};
+  background-color: ${({ color, ghost, theme: { colors } }) =>
+    ghost ? 'transparent' : color ? colors[color] || color : '#1a75f1'};
 
   span {
     position: absolute;
     z-index: 50;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: ${({ color }) => color || 'whitesmoke'};
+    background: ${({ color, ghost, theme: { colors } }) =>
+      ghost ? colors[color || 'white'] : 'whitesmoke'};
 
     pointer-events: none;
 
