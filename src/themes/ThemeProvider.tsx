@@ -6,10 +6,9 @@ interface NatesThemeProviderProps {
   children?: React.ReactElement | React.ReactElement[] | undefined;
 }
 
-const NatesThemeProvider: React.FC<NatesThemeProviderProps> = ({
+export const NatesThemeProvider: React.FC<NatesThemeProviderProps> = ({
   children,
 }) => {
   return <ThemeProvider theme={defaultTheme.theme}>{children}</ThemeProvider>;
 };
 
-export default NatesThemeProvider;
