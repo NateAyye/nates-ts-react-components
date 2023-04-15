@@ -47,7 +47,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const { radi, icon, noIcon, errorIcon, ripple, size, error, z } = props;
+  const { radi, icon, noIcon, errorIcon, ripple, size, z, ghost } = props;
   const styledProps = {
     radi,
     icon,
@@ -55,8 +55,8 @@ export const Button: React.FC<ButtonProps> = ({
     errorIcon,
     ripple,
     size,
-    error,
     z,
+    ghost,
   };
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -76,9 +76,11 @@ export const Button: React.FC<ButtonProps> = ({
       {...styledProps}
       {...props}
     >
-      <ButtonContent {...styledProps}>{children}</ButtonContent>
+      <ButtonContent color={props.color} {...styledProps}>
+        {children}
+      </ButtonContent>
       <ErrorIcon {...styledProps}>
-        {noIcon ? null : error ? errorIcon ?? '❗' : icon}
+        {noIcon ? null : props.color === 'error' ? errorIcon ?? '❗' : icon}
       </ErrorIcon>
     </NatesButton>
   );

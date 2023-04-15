@@ -33,6 +33,7 @@ Current Components:
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
 
+- [Getting Started]()
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
@@ -46,9 +47,18 @@ Install the library by running this (npm) command: // can replace npm will your 
 
 ## Usage
 
-### In Order to have the components to use the theme that comes with the package Make sure to wrap your \<App/> component in the \<NatesThemeProvider/>
+<center>
+<strong id='getting-started' style='font-size: 50px;'>Getting Started</strong>
+</center>
 
-Wrapping Your App in the theme provider is not necessary since their are fall back values for the components. but the default theme adds a lot of default colors and sizes that you can now use where ever
+In order to use this Component Library You are going to want to wrap your \<App/> with the NatesThemeProvider Component That is provided within the package.
+
+> ---
+>
+> # **!! Important**
+>
+> Most of the styling and looks of each component are going to be heavily based off of the theme provider.
+> But the components do all have a fallback value that they go to but it will probably not be the best looking
 
 **Theme Provider**
 
