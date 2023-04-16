@@ -7,6 +7,8 @@ export interface NatesButtonProps
   ripple?: boolean;
   size?: FontSizeKeys;
   radi?: string;
+  disabled?: boolean;
+  rounded?: boolean;
   color?: ThemeColorKeys | CSSProperties['color'];
   z?: ZIndicesKeys;
   ghost?: boolean;

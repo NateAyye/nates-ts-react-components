@@ -8,4 +8,14 @@
 
 .App {
   min-height: 100vh;
+  padding: 0 2rem;
+}
+
+pre {
+  display: inline-block;
+  border-radius: 0.5rem;
+  padding: 1rem;
+
+  background: #444445;
+  color: whitesmoke;
 }

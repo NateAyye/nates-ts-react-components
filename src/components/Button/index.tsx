@@ -23,19 +23,24 @@ import { NatesButtonProps } from './models';
  */
 export const Button: React.FC<NatesButtonProps> = ({
   children,
-  onClick,
+  onMouseDown,
   ...props
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const { ripple, ghost, z, color, size } = props;
-  const styledProps = { ripple, ghost, z, color, size };
+  const { ripple, ghost, z, color, size, disabled, rounded } = props;
+  const styledProps = { ripple, ghost, z, color, size, disabled, rounded };
 
-  function handleOnClick(e: React.MouseEvent<HTMLButtonElement>) {
-    if (onClick) onClick(e);
+  function handleMouseDown(e: React.MouseEvent<HTMLButtonElement>) {
+    if (onMouseDown) onMouseDown(e);
     if (!ripple) createRipple(e, buttonRef);
   }
   return (
-    <NatesStyledButton ref={buttonRef} onClick={handleOnClick} {...props}>
+    <NatesStyledButton
+      aria-disabled={disabled}
+      ref={buttonRef}
+      onMouseDown={handleMouseDown}
+      {...props}
+    >
       <NatesButtonContent {...styledProps}>{children}</NatesButtonContent>
     </NatesStyledButton>
   );
