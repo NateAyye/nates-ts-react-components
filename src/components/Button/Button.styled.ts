@@ -4,25 +4,28 @@ import { NatesButtonProps } from './models';
 
 // prettier-ignore
 export const NatesStyledButton = styled.button<NatesButtonProps>`
-  ${({ color, ghost, z, size, radi, disabled, rounded, theme: { colors, fontSizes, fontWeights, zIndices, space },
+  ${({ color, ghost, z, size, radi, disabled, rounded, flat, theme: { colors, fontSizes, fontWeights, zIndices, space },
   }) => ({
     position: 'relative',
     zIndex: z ? zIndices[z] || z : '',
     isolation: 'isolate',
     fontSize: fontSizes[size || 'md'] || '1rem',
     fontWeight: 600,
-    padding: `calc(${space[size || 'md'] || '1rem'} / 2.5) calc(${ space[size || 'md'] || '1rem' } * 2)`,
+    padding: `calc(${space?.[size || 'md'] || '1rem'} / 2.5) calc(${ space[size || 'md'] || '1rem' } * 2)`,
     cursor: disabled ? 'default' : 'pointer',
     contain: 'paint',
     border: ghost ? `2px solid ${colors[color || 'primary'] || color}` : 'none',
     borderRadius: rounded ? '100vh' : radi || '.5em',
     backgroundColor: ghost ? 'transparent' : disabled ? colors.gray500 : color ? colors[color] || color : '#1a75f1',
+
+    filter: flat ? 'saturate(.7) ': '',
+
     pointerEvents: disabled ? 'none' : 'all' ,
     transition: 'transform 150ms ease-in',
 
-    ':active': {
+    ':active':  {
       transform: 'scale(.99)',
-      filter: 'brightness(.9)'
+      filter: !flat ? 'brightness(.9)' : ''
     }
 
   })}
@@ -42,7 +45,7 @@ export const NatesStyledButton = styled.button<NatesButtonProps>`
 `;
 
 export const NatesButtonContent = styled.div<NatesButtonProps>(
-  ({ color, ghost, disabled, theme: { colors } }) => ({
+  ({ color, ghost, disabled, flat, theme: { colors } }) => ({
     display: 'inline',
     position: 'relative',
     pointerEvents: 'none',

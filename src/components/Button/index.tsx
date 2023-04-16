@@ -27,8 +27,10 @@ export const Button: React.FC<NatesButtonProps> = ({
   ...props
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const { ripple, ghost, z, color, size, disabled, rounded } = props;
-  const styledProps = { ripple, ghost, z, color, size, disabled, rounded };
+  // prettier-ignore
+  const { ripple, ghost, z, color, size, disabled, rounded, flat } = props;
+  // prettier-ignore
+  const styledProps = { ripple, ghost, z, color, size, disabled, rounded, flat };
 
   function handleMouseDown(e: React.MouseEvent<HTMLButtonElement>) {
     if (onMouseDown) onMouseDown(e);

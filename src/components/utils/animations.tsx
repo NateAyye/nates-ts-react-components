@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components";
+import { keyframes } from 'styled-components';
 
 export const ripple = keyframes`
   0% {
@@ -17,8 +17,8 @@ export const createRipple = (
 ) => {
   const span = document.createElement('span');
 
-  span.style.top = e.clientY - e.currentTarget.offsetTop + 'px';
-  span.style.left = e.clientX - e.currentTarget.offsetLeft + 'px';
+  span.style.top = e.pageY - e.currentTarget.offsetTop + 'px';
+  span.style.left = e.pageX - e.currentTarget.offsetLeft + 'px';
 
   buttonRef.current?.appendChild(span);
 

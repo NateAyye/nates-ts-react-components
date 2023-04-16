@@ -9,6 +9,7 @@ export interface NatesButtonProps
   radi?: string;
   disabled?: boolean;
   rounded?: boolean;
+  flat?: boolean;
   color?: ThemeColorKeys | CSSProperties['color'];
   z?: ZIndicesKeys;
   ghost?: boolean;
