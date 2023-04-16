@@ -174,6 +174,7 @@ export const defaultTheme: DefaultTheme = {
       mono: "Menlo, Monaco, 'Lucida Console', 'Liberation Mono','DejaVu Sans Mono', 'Bitstream Vera Sans Mono'",
     },
     fontSizes: {
+      xxs: '0.5rem' /* 12px */,
       xs: '0.75rem' /* 12px */,
       sm: '0.875rem' /* 14px */,
       base: '1rem' /* 16px */,

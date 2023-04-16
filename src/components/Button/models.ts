@@ -1,3 +1,4 @@
+import { CSSProperties } from 'styled-components';
 import { FontSizeKeys, ThemeColorKeys, ZIndicesKeys } from '../../themes';
 
 export interface NatesButtonProps
@@ -6,7 +7,7 @@ export interface NatesButtonProps
   ripple?: boolean;
   size?: FontSizeKeys;
   radi?: string;
-  color?: ThemeColorKeys;
+  color?: ThemeColorKeys | CSSProperties['color'];
   z?: ZIndicesKeys;
   ghost?: boolean;
 }

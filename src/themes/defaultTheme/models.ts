@@ -162,6 +162,7 @@ export interface DefaultTheme {
     };
     space: {};
     fontSizes: {
+      xxs: string;
       xs: string;
       sm: string;
       base: string;

@@ -18,7 +18,7 @@ export const ButtonPage: React.FC<ButtonPageProps> = ({}) => {
       </Button>
       <Button>Default</Button>
       <Button size="lg">Default</Button>
-      <Button size="xl">Default</Button>
+      <Button size="3xl">Default</Button>
       <Button size="2xl">Default</Button>
       <br />
       <Button color="secondary" size="sm" onClick={handleMouseClick}>
@@ -35,7 +35,7 @@ export const ButtonPage: React.FC<ButtonPageProps> = ({}) => {
         Default
       </Button>
       <br />
-      <Button ghost color="secondary" size="sm" onClick={handleMouseClick}>
+      <Button ghost size="sm" color='secondary' onClick={handleMouseClick}>
         Hello
       </Button>
       <Button ghost color="secondary">

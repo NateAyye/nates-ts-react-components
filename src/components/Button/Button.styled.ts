@@ -14,7 +14,7 @@ export const NatesStyledButton = styled.button<NatesButtonProps>`
     padding: `calc(${space[size || 'md'] || '1rem'} / 3) calc(${ space[size || 'md'] || '1rem' } * 2)`,
     cursor: 'pointer',
     contain: 'paint',
-    border: ghost ? `2px solid ${colors[color || 'primary'] || 'gray'}` : 'none',
+    border: ghost ? `2px solid ${colors[color || 'primary'] || color}` : 'none',
     borderRadius: radi || '.5em',
     backgroundColor: ghost ? 'transparent' : color ? colors[color] || color : '#1a75f1',
   })}
@@ -27,7 +27,7 @@ export const NatesStyledButton = styled.button<NatesButtonProps>`
     transform: translate(-50%, -50%);
 
     background: ${({ color, ghost, theme: { colors } }) =>
-      ghost ? colors[color || 'primary'] : 'whitesmoke'};
+      ghost ? colors[color || 'primary'] || color : 'whitesmoke'};
 
     animation: ${ripple} 500ms linear infinite;
   }
@@ -41,6 +41,6 @@ export const NatesButtonContent = styled.div<NatesButtonProps>(
     zIndex: 100,
     margin: 0,
     padding: 0,
-    color: ghost ? colors[color || 'primary'] : 'whitesmoke',
+    color: ghost ? colors[color || 'primary'] || color : 'whitesmoke',
   }),
 );
