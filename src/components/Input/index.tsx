@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { IInputProps } from './models';
+import React, { useState } from 'react';
+import * as S from './Input.styled';
+import { InputProps } from './models';
 
 /**
  * This Component is a Dynamic Input Component Built in Typescript.
@@ -21,88 +21,60 @@ import { IInputProps } from './models';
  * type = 'text'
  * radi = '.25rem'
  */
-export const Input: React.FC<IInputProps> = ({ ...props }) => {
-  const { id, preview, type, radi, labelProps, ...rest } = props;
+export const Input: React.FC<InputProps> = ({
+  label,
+  id,
+  labelProps,
+  labelPlaceholder,
+  placeholder,
+  fw,
+  type,
+  clearable,
+  color,
+  onChange,
+  onKeyDown,
+  value: inputVal,
+  ...props
+}) => {
+  const [value, setValue] = useState(inputVal || '');
+  const sProps = { color, labelPlaceholder, fw, type, clearable };
+
+  const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (onKeyDown) onKeyDown(e);
+    switch (e.code) {
+      case 'Escape':
+        setValue('');
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) onChange(e);
+    setValue(e.target.value);
+  };
 
   return (
-    <InputContainer type={type} radi={radi}>
-      {type !== 'submit' ? (
-        <label htmlFor={id} {...labelProps}>
-          {preview}
-        </label>
+    <S.InputContainer {...sProps}>
+      {label ? <S.InputLabel>{label}</S.InputLabel> : null}
+      {labelPlaceholder ? (
+        <S.LabelPlaceholder>{labelPlaceholder}</S.LabelPlaceholder>
       ) : null}
-      <input type={type} id={id} placeholder=" " {...rest} />
-    </InputContainer>
+      <S.PropsInput
+        id={id ? id.toString() : ''}
+        type={type}
+        value={value}
+        onChange={handleOnChange}
+        onKeyDown={handleOnKeyDown}
+        autoComplete={'off'}
+        placeholder={labelPlaceholder ? ' ' : placeholder}
+        labelPlaceholder={labelPlaceholder}
+        {...props}
+      />
+      {clearable && value !== '' ? (
+        <S.ClearButton2 onClick={() => setValue('')}>&times;</S.ClearButton2>
+      ) : null}
+    </S.InputContainer>
   );
 };
-
-const InputContainer = styled.div<Omit<IInputProps, 'id' | 'preview'>>`
-  display: flex;
-  max-width: 20rem;
-  line-height: 1.25;
-  flex-direction: column;
-  position: relative;
-  font-size: 14px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: ${(props) => props.fw || '500'};
-
-  & input {
-    position: relative;
-    font-size: 14px;
-    border: 1px solid black;
-    background: #cccccc99;
-    margin-top: calc(1lh + ${({ theme }) => theme.space.sm || '.25rem / 2'});
-    padding: ${({ theme }) =>
-      theme ? `calc(${theme.space.sm} / 2) ${theme.space.sm}` : '.25em .5em'};
-    padding-left: ${({ theme }) =>
-      theme ? `calc(${theme.space.sm} * 2)` : '.25em .5em'};
-    border-radius: ${(props) => props.radi || '.25rem'};
-    box-shadow: 0 0 0px 0 #589eccca;
-
-    transition: box-shadow 200ms ease-in;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0.3lh;
-    height: 0.1ex;
-    width: 80%;
-    background-color: black;
-    transform: translateX(-50%);
-  }
-
-  input:focus-within {
-    border: 1px solid black;
-    outline: 2px solid black;
-    outline-offset: -2px;
-
-    box-shadow: 0 0 1px 2px #589eccca;
-  }
-
-  input:not(:placeholder-shown) {
-    background: #cccccc99;
-  }
-
-  &:has(input:not(:placeholder-shown)) label {
-    font-size: 16px;
-    top: calc(${(props) => props?.theme.space.sm || `.25rem`} / 2);
-    left: 0.5rem;
-    color: ${(props) => props.theme.colors.foreground || 'black'};
-  }
-
-  & label {
-    font-size: 14px;
-    color: #444;
-    position: absolute;
-    pointer-events: none;
-    top: calc(1.25lh + ${(props) => props?.theme.space.sm || '.25rem'});
-    left: calc(
-      ${({ theme }) => (theme ? theme.space.sm : '.25em .5em')} + 0.2ex +
-        0.75rem
-    );
-
-    transition: all 200ms ease-in;
-  }
-`;

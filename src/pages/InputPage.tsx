@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input } from '../components/Inputv2';
+import { Input } from '../components/Input';
 
 interface InputPageProps {}
 
 export const InputPage: React.FC<InputPageProps> = ({}) => {
   return (
-    <InputPageContainer>
+    <InputPageContainer style={{ background: 'gray' }}>
       <h1>Input Page</h1>
       <p>
-        This Input is meant to be built ontop of the normal html input. I want
+        This Input is meant to be built on top of the normal html input. I want
         it to be used almost like a normal html input that has extra styling and
         functionallity built in. There will be additional features and
         attributes added for the sake of making everyones day easier. The goal
@@ -27,6 +27,14 @@ export const InputPage: React.FC<InputPageProps> = ({}) => {
           id="name"
           label="Email: "
           placeholder="hello"
+        />
+        <Input
+          
+          fw="semibold"
+          clearable
+          type="email"
+          id="email"
+          labelPlaceholder="Email"
         />
       </section>
     </InputPageContainer>
