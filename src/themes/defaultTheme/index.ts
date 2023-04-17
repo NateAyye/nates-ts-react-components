@@ -282,7 +282,15 @@ export const defaultTheme: DefaultTheme = {
       80: '20rem',
       96: '24rem',
     },
-    sizes: {},
+    sizes: {
+      xs: '15px',
+      sm: '30px',
+      md: '40px',
+      base: '40px',
+      lg: '50px',
+      xl: '60px',
+      xxl: '75px',
+    },
     borderWidths: {
       light: '1px',
       normal: '2px',
@@ -356,4 +364,8 @@ export type ZIndicesKeys = NonFunctionPropertyNames<
 
 export type ThemeColorKeys = NonFunctionPropertyNames<
   DefaultTheme['theme']['colors']
+>;
+
+export type ThemeSizeKeys = NonFunctionPropertyNames<
+  DefaultTheme['theme']['sizes']
 >;

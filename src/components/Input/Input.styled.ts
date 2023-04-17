@@ -60,7 +60,7 @@ export const InputContainer = styled.div<
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
-  maxWidth: space[56] || '15rem',
+  maxWidth: space[80] || '18rem',
   fontFamily: fonts.sans || "'Segue UI', sans-serif",
   fontWeight: fw ? fw : fontWeights.semibold || '600',
   fontSize: fontSizes.md || '18px',

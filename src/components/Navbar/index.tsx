@@ -22,6 +22,9 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         <li>
           <Link to={'/form'}>Form</Link>
         </li>
+        <li>
+          <Link to={'/avatar'}>Avatar</Link>
+        </li>
       </ul>
     </div>
   );

@@ -8,22 +8,22 @@ const inputs: Pick<FormProps, 'inputs'> = {
   inputs: [
     {
       id: 'name',
-      preview: 'Name: ',
+      labelPlaceholder: 'Name: ',
       type: 'text',
     },
     {
       id: 'email',
-      preview: 'Email: ',
+      labelPlaceholder: 'Email: ',
       type: 'email',
     },
     {
       id: 'password',
-      preview: 'Password: ',
+      labelPlaceholder: 'Password: ',
       type: 'password',
     },
     {
       id: 'confirm-password',
-      preview: 'Confirm Password: ',
+      labelPlaceholder: 'Confirm Password: ',
       type: 'confirm-password',
     },
   ],
