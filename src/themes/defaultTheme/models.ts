@@ -186,7 +186,15 @@ export interface DefaultTheme {
     };
     lineHeights: {};
     letterSpacings: {};
-    sizes: {};
+    sizes: {
+      xs: string;
+      sm: string;
+      md: string;
+      base: string;
+      lg: string;
+      xl: string;
+      xxl: string;
+    };
     borderWidths: {};
     borderStyles: {};
     radii: {};

@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Input } from '../Input';
-import { IInputProps } from '../Input/models';
+import { InputProps } from '../Input/models';
 import { FormContainer } from './FormContainer';
 import { FormContainerProps, FormProps } from './models';
 
 type FormComp = React.FunctionComponent<FormProps> & {
   Container: React.FC<FormContainerProps>;
-  Input: React.FC<IInputProps>;
+  Input: React.FC<InputProps>;
 };
 
 /**

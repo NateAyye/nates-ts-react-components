@@ -1,5 +1,6 @@
 import { Route, Routes, RoutesProps } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
+import { AvatarPage } from './pages/Avatar';
 import { ButtonPage } from './pages/Button';
 import { FormPage } from './pages/FormPage';
 import { Home } from './pages/Home';
@@ -16,12 +17,10 @@ function App() {
         <Route path="/select" element={<SelectPage />} />
         <Route path="/input" element={<InputPage />} />
         <Route path="/form" element={<FormPage />} />
+        <Route path="/avatar" element={<AvatarPage />} />
       </Routes>
     </div>
   );
-};
-
-
-
+}
 
 export default App;
