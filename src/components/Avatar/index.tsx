@@ -36,7 +36,6 @@ const SAvatar = styled.div<AvatarProps>(
     round,
     size,
     bordered,
-    textColor,
     zoomed,
     theme: { colors, sizes, space },
   }) => ({
