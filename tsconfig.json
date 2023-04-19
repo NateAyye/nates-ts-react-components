@@ -21,7 +21,6 @@
     "sourceMap": true,
     "types": ["node"]
   },
-  "include": ["src", "./index.ts"],
-  "exclude": ["src/pages"],
+  "include": ["src/components", "src/layouts", "src/themes", "src/index.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

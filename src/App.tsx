@@ -1,4 +1,5 @@
-import { Route, Routes, RoutesProps } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { AvatarPage } from './pages/Avatar';
 import { ButtonPage } from './pages/Button';

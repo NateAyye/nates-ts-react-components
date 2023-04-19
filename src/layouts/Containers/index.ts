@@ -1,1 +1,2 @@
-export * from './FlexContainer'
+export * from './FlexContainer';
+export * from './Stack';

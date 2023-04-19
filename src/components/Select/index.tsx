@@ -3,6 +3,7 @@ import * as S from './Select.styled';
 import { SelectOption, SelectProps } from './models';
 
 export const Select: React.FC<SelectProps> = ({
+  dynamic,
   multiple,
   value,
   onChange,

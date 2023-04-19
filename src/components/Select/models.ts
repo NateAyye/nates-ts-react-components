@@ -1,4 +1,3 @@
-
 export interface SelectOption {
   label: string;
   value: string | number;
@@ -18,4 +17,5 @@ export interface MultipleSelectProps {
 
 export type SelectProps = {
   options: SelectOption[];
+  dynamic?: boolean;
 } & (SingleSelectProps | MultipleSelectProps);

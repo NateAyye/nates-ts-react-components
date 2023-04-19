@@ -1,8 +1,7 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { Select, SelectOption } from '../components';
 
 interface SelectPageProps {}
-
 
 const options = [
   { label: 'first', value: 1 },
@@ -18,22 +17,23 @@ export const SelectPage: React.FC<SelectPageProps> = ({}) => {
   return (
     <div>
       <h1>Select Page</h1>
-            <Select
+      <Select
         multiple
+        dynamic
         value={value1}
         options={options}
         onChange={(o) => {
           setValue1(o);
         }}
-      /> 
-       <br />
-        <Select
-          value={value2}
-          options={options}
-          onChange={(o) => {
-            setValue2(o);
-          }}
-        /> 
+      />
+      <br />
+      <Select
+        value={value2}
+        options={options}
+        onChange={(o) => {
+          setValue2(o);
+        }}
+      />
     </div>
   );
 };
