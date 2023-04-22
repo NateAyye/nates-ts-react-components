@@ -29,6 +29,14 @@ Current Components:
 - Form (Form, Form.Container)
 - FlexContainer
 
+> ---
+>
+> # **!! Anouncment**
+>
+> Currently I am taking a break from updates to get a better understanding of aria and WAI standards so that I can give everyone an accessible Library
+> I want all the Accessibility built in. Which means some components are gonne have props required in order to make that happen.
+> -- Thanks For being patient and understanding
+
 ## Table of Contents (Optional)
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
